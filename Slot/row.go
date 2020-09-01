@@ -12,6 +12,7 @@ type IRow interface {
 	GetLen() int
 	GetRow() []ISymbol
 	GetWildCount() int
+	GetSymbols(index int, count int) ([]ISymbol, error)
 }
 
 //圖案的列
@@ -45,4 +46,9 @@ func (t *Row) GetWildCount() int {
 		}
 	}
 	return count
+}
+
+/**/
+func (t *Row) GetSymbols(index int, count int) ([]ISymbol, error) {
+	return nil, nil
 }

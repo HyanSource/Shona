@@ -13,6 +13,9 @@ type ITable interface {
 	GetWildCount() int
 	GetScatterCount() int
 	GetOdds() float64
+
+	GetRandomTable()
+	GetSpecifyTable()
 }
 
 /*盤面*/
@@ -47,4 +50,12 @@ func (t *Table) GetScatterCount() int {
 
 func (t *Table) GetOdds() float64 {
 	return 0
+}
+
+func (t *Table) GetRandomTable() {
+
+}
+
+func (t *Table) GetSpecifyTable() {
+
 }
