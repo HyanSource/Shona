@@ -1,12 +1,12 @@
 package Slot
 
 /*初始化圖案*/
-func NewSymbol(name string, typeint int, length int) ISymbol {
+func NewSymbol(name string, st ST, odds []int) ISymbol {
 
 	return &Symbol{
 		name:       name,
-		symboltype: ST(typeint),
-		odds:       make([]int, length),
+		symboltype: st,
+		odds:       odds,
 	}
 }
 
@@ -15,7 +15,7 @@ type ISymbol interface {
 	GetName() string
 	GetSymbolType() string
 	GetOdds() []int
-	CheckWild() bool
+	CheckType(st ST) bool
 }
 
 //圖案
@@ -45,7 +45,7 @@ func (t *Symbol) GetOdds() []int {
 	return t.odds
 }
 
-/*判斷是否為wild*/
-func (t *Symbol) CheckWild() bool {
-	return t.symboltype == WILD
+/*判斷類型*/
+func (t *Symbol) CheckType(st ST) bool {
+	return t.symboltype == st
 }

@@ -1,5 +1,7 @@
 package Slot
 
+import "errors"
+
 /*初始化行*/
 func NewRow(s []ISymbol) IRow {
 	return &Row{
@@ -11,7 +13,6 @@ type IRow interface {
 	SetSymbol(s []ISymbol)
 	GetLen() int
 	GetRow() []ISymbol
-	GetWildCount() int
 	GetSymbols(index int, count int) ([]ISymbol, error)
 }
 
@@ -37,18 +38,24 @@ func (t *Row) GetRow() []ISymbol {
 	return r
 }
 
-/*一行的wild數量*/
-func (t *Row) GetWildCount() int {
-	count := 0
-	for _, v := range t.symbols {
-		if v.CheckWild() {
-			count++
-		}
-	}
-	return count
-}
-
 /**/
 func (t *Row) GetSymbols(index int, count int) ([]ISymbol, error) {
-	return nil, nil
+
+	if count > t.GetLen() {
+		return nil, errors.New("count more than the length")
+	}
+
+	r := make([]ISymbol, count)
+
+	for i := 0; i < count; i++ {
+		r[i] = t.symbols[index]
+
+		if index == t.GetLen() {
+			index = 0
+		} else {
+			index++
+		}
+	}
+
+	return r, nil
 }
