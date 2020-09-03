@@ -17,7 +17,8 @@ type IRowsControll interface {
 
 /*盤面*/
 type RowsControll struct {
-	rows []IRow
+	rows         []IRow
+	SymbolManage ISymbolManage
 }
 
 /*盤面寬度*/

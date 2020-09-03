@@ -1,7 +1,7 @@
 package Slot
 
 /*初始化圖案*/
-func NewSymbol(name string, st ST, odds []int) ISymbol {
+func NewSymbol(name string, st ST, odds []float64) ISymbol {
 
 	return &Symbol{
 		name:       name,
@@ -14,7 +14,7 @@ type ISymbol interface {
 	SetSymbol()
 	GetName() string
 	GetSymbolType() string
-	GetOdds() []int
+	GetOdds() []float64
 	CheckType(st ST) bool
 }
 
@@ -22,7 +22,7 @@ type ISymbol interface {
 type Symbol struct {
 	name       string
 	symboltype ST
-	odds       []int
+	odds       []float64
 }
 
 /*重設 節省效能*/
@@ -41,7 +41,7 @@ func (t *Symbol) GetSymbolType() string {
 }
 
 /*取得賠率*/
-func (t *Symbol) GetOdds() []int {
+func (t *Symbol) GetOdds() []float64 {
 	return t.odds
 }
 
