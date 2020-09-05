@@ -1,11 +1,16 @@
 package Slot
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestRow(t *testing.T) {
-	a := NewSymbol("A", NORMAL, []float64{0, 0, 10, 15, 20})
-	fmt.Println(a)
+	r := NewRow([]string{"A", "A", "K", "Q", "J", "10"})
+
+	assert.Equal(t, 6, r.GetLen())
+	assert.Equal(t, []string{"A", "A", "K", "Q", "J", "10"}, r.GetRow())
+	assert.Equal(t, []string{"A", "K", "Q"}, r.GetSymbols(1, 3))
+
 }
