@@ -1,9 +1,10 @@
 package Slot
 
 /*初始化圖案*/
-func NewRowsControll(rs []IRow) IRowsControll {
+func NewRowsControll(rs []IRow, sm ISymbolManage) IRowsControll {
 	return &RowsControll{
-		rows: rs,
+		rows:         rs,
+		SymbolManage: sm,
 	}
 }
 
@@ -17,16 +18,17 @@ type IRowsControll interface {
 
 /*盤面*/
 type RowsControll struct {
-	rows         []IRow
-	SymbolManage ISymbolManage
+	rows         []IRow        //所有盤面滾輪
+	SymbolManage ISymbolManage //素材管理
+	calcline     ICalcLine     //線規則
 }
 
-/*盤面寬度*/
+/*取得盤面寬度*/
 func (t *RowsControll) GetRowsLen() int {
 	return len(t.rows)
 }
 
-/*取得盤面*/
+/*取得所有盤面*/
 func (t *RowsControll) GetAllRows() []IRow {
 	rs := make([]IRow, t.GetRowsLen())
 	copy(rs, t.rows)

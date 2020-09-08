@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/HyanSource/Shona/Slot"
 )
 
 //儲存全域使用的變數
@@ -14,7 +16,7 @@ var GlobalObject *GlobalObj
 func init() {
 	GlobalObject = &GlobalObj{
 		FilePath: "shonaconfig/shona.json",
-		Odds:     make(map[string][]float64),
+		Symbols:  make([]Slot.ISymbol, 0),
 		Reels:    make([][]string, 0, 5),
 	}
 
@@ -22,9 +24,9 @@ func init() {
 }
 
 type GlobalObj struct {
-	FilePath string               //載入路徑
-	Odds     map[string][]float64 //儲存賠率
-	Reels    [][]string           //儲存所有滾輪
+	FilePath string         //載入路徑
+	Symbols  []Slot.ISymbol //儲存賠率
+	Reels    [][]string     //儲存所有滾輪
 }
 
 //判斷文章是否存在
