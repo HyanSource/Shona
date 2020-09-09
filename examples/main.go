@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/HyanSource/Shona/Slot"
-	// _ "github.com/HyanSource/Shona/utils"
 )
 
 func main() {
@@ -34,7 +33,7 @@ func main() {
 	}
 
 	//盤面物件
-	rc := Slot.NewRowsControll(r, sm)
+	rc := Slot.NewRowsControll(r, sm, 3)
 	rc.GetSpecifyTable()
 
 	fmt.Println("OK")
