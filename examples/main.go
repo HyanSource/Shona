@@ -34,7 +34,7 @@ func main() {
 
 	//盤面物件
 	rc := Slot.NewRowsControll(r, sm, 3)
-	rc.GetSpecifyTable()
+	rc.GetLineGameRTP()
 
 	fmt.Println("OK")
 }

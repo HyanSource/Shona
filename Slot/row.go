@@ -1,17 +1,12 @@
 package Slot
 
+import "github.com/HyanSource/Shona/ISlot"
+
 /*初始化行*/
-func NewRow(s []string) IRow {
+func NewRow(s []string) ISlot.IRow {
 	return &Row{
 		symbols: s,
 	}
-}
-
-type IRow interface {
-	SetSymbol(s []string)
-	GetLen() int
-	GetRow() []string
-	GetSymbols(index int, count int) []string
 }
 
 //圖案的列

@@ -1,4 +1,4 @@
-package Slot
+package st
 
 import (
 	"fmt"

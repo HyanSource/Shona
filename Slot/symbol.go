@@ -1,7 +1,12 @@
 package Slot
 
+import (
+	"github.com/HyanSource/Shona/ISlot"
+	"github.com/HyanSource/Shona/st"
+)
+
 /*初始化圖案*/
-func NewSymbol(name string, st ST, odds []float64) ISymbol {
+func NewSymbol(name string, st st.ST, odds []float64) ISlot.ISymbol {
 
 	return &Symbol{
 		name:       name,
@@ -10,18 +15,10 @@ func NewSymbol(name string, st ST, odds []float64) ISymbol {
 	}
 }
 
-type ISymbol interface {
-	SetSymbol()
-	GetName() string
-	GetSymbolType() string
-	GetOdds() []float64
-	CheckType(st ST) bool
-}
-
 //圖案
 type Symbol struct {
 	name       string
-	symboltype ST
+	symboltype st.ST
 	odds       []float64
 }
 
@@ -46,6 +43,6 @@ func (t *Symbol) GetOdds() []float64 {
 }
 
 /*判斷類型*/
-func (t *Symbol) CheckType(st ST) bool {
+func (t *Symbol) CheckType(st st.ST) bool {
 	return t.symboltype == st
 }

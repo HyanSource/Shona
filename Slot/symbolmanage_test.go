@@ -3,6 +3,7 @@ package Slot
 import (
 	"testing"
 
+	"github.com/HyanSource/Shona/st"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -11,11 +12,11 @@ func TestSymbolManage(t *testing.T) {
 	//初始化
 	SM := NewSymbolManage()
 	//新增
-	Add_a := SM.Add(&Symbol{"A", NORMAL, []float64{0, 0, 10, 15, 20}})
-	Add_k := SM.Add(&Symbol{"K", NORMAL, []float64{0, 0, 10, 15, 20}})
-	Add_w := SM.Add(&Symbol{"W", WILD, []float64{0, 0, 0, 0, 100}})
-	Add_s := SM.Add(&Symbol{"S", SCATTER, []float64{0, 0, 0, 0, 0}})
-	Add_s2 := SM.Add(&Symbol{"S", SCATTER, []float64{0, 0, 0, 0, 0}})
+	Add_a := SM.Add(&Symbol{"A", st.NORMAL, []float64{0, 0, 10, 15, 20}})
+	Add_k := SM.Add(&Symbol{"K", st.NORMAL, []float64{0, 0, 10, 15, 20}})
+	Add_w := SM.Add(&Symbol{"W", st.WILD, []float64{0, 0, 0, 0, 100}})
+	Add_s := SM.Add(&Symbol{"S", st.SCATTER, []float64{0, 0, 0, 0, 0}})
+	Add_s2 := SM.Add(&Symbol{"S", st.SCATTER, []float64{0, 0, 0, 0, 0}})
 
 	assert.True(t, Add_a)
 	assert.True(t, Add_k)

@@ -1,26 +1,20 @@
 package Slot
 
-func NewSymbolManage() ISymbolManage {
-	return &SymbolManage{
-		symbols: make(map[string]ISymbol),
-	}
-}
+import "github.com/HyanSource/Shona/ISlot"
 
-type ISymbolManage interface {
-	Add(s ISymbol) bool                    //新增元素
-	Check(s string) bool                   //檢查元素
-	Get(s string) ISymbol                  //取得元素
-	GetOdds(s string, linelen int) float64 //取得賠率
-	RemoveAll()                            //移除所有
+func NewSymbolManage() ISlot.ISymbolManage {
+	return &SymbolManage{
+		symbols: make(map[string]ISlot.ISymbol),
+	}
 }
 
 //管理所有的素材和賠率
 type SymbolManage struct {
-	symbols map[string]ISymbol
+	symbols map[string]ISlot.ISymbol
 }
 
 /*加入素材*/
-func (t *SymbolManage) Add(s ISymbol) bool {
+func (t *SymbolManage) Add(s ISlot.ISymbol) bool {
 
 	if !t.Check(s.GetName()) {
 		t.symbols[s.GetName()] = s
@@ -36,7 +30,7 @@ func (t *SymbolManage) Check(s string) bool {
 }
 
 /*取得素材*/
-func (t *SymbolManage) Get(s string) ISymbol {
+func (t *SymbolManage) Get(s string) ISlot.ISymbol {
 
 	if t.Check(s) {
 		return t.symbols[s]
@@ -55,5 +49,5 @@ func (t *SymbolManage) GetOdds(s string, linelen int) float64 {
 
 /*移除全部*/
 func (t *SymbolManage) RemoveAll() {
-	t.symbols = make(map[string]ISymbol)
+	t.symbols = make(map[string]ISlot.ISymbol)
 }
