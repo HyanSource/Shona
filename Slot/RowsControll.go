@@ -4,7 +4,6 @@ import (
 	"strconv"
 
 	"github.com/HyanSource/Shona/ISlot"
-	_ "github.com/HyanSource/Shona/ISlot"
 )
 
 /*初始化圖案*/
@@ -54,17 +53,6 @@ func (t *RowsControll) GetGameTable(index int) ([]string, float64) {
 	}
 
 	return []string{}, 0
-}
-
-//取得RTP
-func (t *RowsControll) GetLineGameRTP() float64 {
-
-	return 0
-}
-
-//取得RTP
-func (t *RowsControll) GetWayGameRTP() float64 {
-	return 0
 }
 
 //可能需要新增兩個東西 calcline calcway

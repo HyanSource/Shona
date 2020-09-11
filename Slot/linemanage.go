@@ -20,8 +20,8 @@ func NewLineManage(linewidth int, height int) ISlot.ILineManage {
 
 /*線的規則*/
 type LineManage struct {
-	linewidth  int     //滾輪寬度 由RowsControll設置
-	lineheight int     //滾輪高度 由RowsControll設置
+	linewidth  int     //滾輪寬度 (判斷有無超過寬度)
+	lineheight int     //滾輪高度 (判斷數字有無超過最大)
 	lines      [][]int //手動加入
 }
 

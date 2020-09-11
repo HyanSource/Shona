@@ -1,7 +1,11 @@
 package ISlot
 
+/*規則計算*/
 type ICalc interface {
-	GetGameTable() []string
-	GetGameOdds() float64
-	GetRTP() float64 //計算RTP
+	Init()
+	GetLen() int
+	GetHeight() int
+	GetPossibility() int                        //總共機率
+	GetGameTable(index int) ([]string, float64) //盤面
+	GetRTP() float64                            //計算RTP
 }
