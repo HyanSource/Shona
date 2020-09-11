@@ -42,7 +42,7 @@ func (t *SymbolManage) Get(s string) ISlot.ISymbol {
 /*取得賠率*/
 func (t *SymbolManage) GetOdds(s string, linelen int) float64 {
 	if t.Check(s) {
-		return t.Get(s).GetOdds()[linelen]
+		return t.Get(s).GetOdds()[linelen-1]
 	}
 	return 0
 }

@@ -49,7 +49,7 @@ func TestSymbolManage(t *testing.T) {
 	assert.Equal(t, []float64{0, 0, 10, 15, 20}, Get_a.GetOdds())
 	//取得賠率
 
-	GetOdds_a := SM.GetOdds("A", 2)
+	GetOdds_a := SM.GetOdds("A", 3)
 
 	assert.Equal(t, float64(10), GetOdds_a)
 
