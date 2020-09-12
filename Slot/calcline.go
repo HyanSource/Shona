@@ -1,20 +1,23 @@
 package Slot
 
 import (
+	"math"
 	"sort"
 	"strconv"
 
 	"github.com/HyanSource/Shona/ISlot"
 )
 
-func NewCalcLine(rs []ISlot.IRow, sm ISlot.ISymbolManage) ISlot.ICalc {
+func NewCalcLine(height int, rs []ISlot.IRow, sm ISlot.ISymbolManage) ISlot.ICalc {
 	return &CalcLine{
+		height:       height,
 		rows:         rs,
 		SymbolManage: sm,
 	}
 }
 
 type CalcLine struct {
+	height       int                 //高度
 	rows         []ISlot.IRow        //所有盤面滾輪
 	SymbolManage ISlot.ISymbolManage //素材管理
 
@@ -59,7 +62,7 @@ func (t *CalcLine) GetGameTable(index int) []string {
 		result[i] = t.rows[i].GetSymbols(index_arr[i], 1)[0]
 	}
 
-	return []string{}
+	return result
 }
 
 /*計算賠率部分*/
@@ -79,7 +82,7 @@ func (t *CalcLine) CalcOdds(result []string) float64 {
 }
 
 /*計算scatter賠率部分和獲得免費次數(依照不同規則)*/
-func (t *CalcLine) CalcScatter(result []string) (float64, int) {
+func (t *CalcLine) CalcScatter(result []string) (float64, int, int) {
 
 	/*目前算只有考慮當只有1種Scatter*/
 	count := 0
@@ -95,37 +98,35 @@ func (t *CalcLine) CalcScatter(result []string) (float64, int) {
 		}
 	}
 	/*暫時寫法*/
-	return t.SymbolManage.GetOdds("S", count), 0
+	return t.SymbolManage.GetOdds("S", count), count, 0
 }
 
 /*總共RTP*/
-func (t *CalcLine) GetRTP() float64 {
+func (t *CalcLine) GetResult() ISlot.IResult {
 
+	winmoney := 0.0
+	// scatterwinmoney := 0.0
+	freecount := 0
 	for i := 0; i < t.possibility; i++ {
-
+		s := t.GetGameTable(i)
+		winmoney += t.CalcOdds(s)
+		swm, c, f := t.CalcScatter(s)
+		//當計算scatter部分需要注意 要看滾輪的高度
+		winmoney += swm * math.Pow(float64(t.height), float64(c))
+		freecount += f
 	}
 
-	return 0
+	return NewResult(t.possibility, 1, winmoney, freecount)
 }
 
-/*取得免費觸發機率*/
-func (t *CalcLine) GetFreeP() float64 {
-
-	for i := 0; i < t.possibility; i++ {
-
-	}
-
-	return 0
-}
-
-//模擬正常玩的RTP
-func (t *CalcLine) GetRandomPlayRTP(playcount int) float64 {
+/*模擬正常玩的RTP*/
+func (t *CalcLine) GetNormalPlayResult(playcount int) ISlot.IResult {
 
 	for i := 0; i < playcount; i++ {
 
 	}
 
-	return 0
+	return NewResult(playcount, 1, 0, 0)
 }
 
 /*需要一個result的interface*/

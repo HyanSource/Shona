@@ -1,6 +1,7 @@
 package Slot
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -30,7 +31,7 @@ func TestCalcline(t *testing.T) {
 	assert.True(t, sm.Add(NewSymbol("S", st.SCATTER, []float64{0, 0, 50, 0, 0})))
 	assert.True(t, sm.Add(NewSymbol("W", st.WILD, []float64{0, 0, 0, 0, 0})))
 
-	cl := NewCalcLine(rs, sm)
+	cl := NewCalcLine(3, rs, sm)
 	cl.Init()
 
 	assert.Equal(t, 5, cl.GetLen())
@@ -51,6 +52,9 @@ func TestCalcline(t *testing.T) {
 	assert.Equal(t, float64(5), cl.CalcOdds([]string{"K", "K", "K", "10", "Q"}))
 	assert.Equal(t, float64(5), cl.CalcOdds([]string{"K", "W", "K", "9", "Q"}))
 	assert.Equal(t, float64(5), cl.CalcOdds([]string{"K", "K", "W", "S", "Q"}))
-	odds, _ := cl.CalcScatter([]string{"K", "S", "S", "S", "Q"})
+	odds, _, _ := cl.CalcScatter([]string{"K", "S", "S", "S", "Q"})
 	assert.Equal(t, float64(50), odds)
+
+	result := cl.GetResult()
+	fmt.Println(result.GetRTP())
 }
