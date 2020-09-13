@@ -35,3 +35,8 @@ func main() {
 
 #### 架構圖
 ![架構](https://github.com/HyanSource/Shona/blob/master/ShonaArchitecture.png)
+
+#### SymbolType
+`NORMAL`:一般素材
+`WILD`:百搭素材
+`SCATTER`:免費素材
