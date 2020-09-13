@@ -34,4 +34,4 @@ func main() {
 ```
 
 #### 架構圖
-![image]("https://github.com/HyanSource/Shona/blob/master/ShonaArchitecture.png")
+![架構](https://github.com/HyanSource/Shona/blob/master/ShonaArchitecture.png)
