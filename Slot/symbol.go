@@ -6,12 +6,13 @@ import (
 )
 
 /*初始化圖案*/
-func NewSymbol(name string, st st.ST, odds []float64) ISlot.ISymbol {
+func NewSymbol(name string, st st.ST, odds []float64, free []int) ISlot.ISymbol {
 
 	return &Symbol{
 		name:       name,
 		symboltype: st,
 		odds:       odds,
+		free:       free,
 	}
 }
 
@@ -20,6 +21,7 @@ type Symbol struct {
 	name       string
 	symboltype st.ST
 	odds       []float64
+	free       []int
 }
 
 /*重設 節省效能*/
@@ -40,6 +42,11 @@ func (t *Symbol) GetSymbolType() string {
 /*取得賠率*/
 func (t *Symbol) GetOdds() []float64 {
 	return t.odds
+}
+
+/*取得免費*/
+func (t *Symbol) GetFree() []int {
+	return t.free
 }
 
 /*判斷類型*/

@@ -11,14 +11,14 @@ import (
 func NewCalcLine(height int, rs []ISlot.Ireel, sm ISlot.ISymbolManage) ISlot.ICalc {
 	return &CalcLine{
 		height:       height,
-		reels:         rs,
+		reels:        rs,
 		SymbolManage: sm,
 	}
 }
 
 type CalcLine struct {
 	height       int                 //高度
-	reels         []ISlot.Ireel        //所有盤面滾輪
+	reels        []ISlot.Ireel       //所有盤面滾輪
 	SymbolManage ISlot.ISymbolManage //素材管理
 
 	possibility int   //所有可能性
@@ -98,7 +98,7 @@ func (t *CalcLine) CalcScatter(result []string) (float64, int, int) {
 		}
 	}
 	/*暫時寫法*/
-	return t.SymbolManage.GetOdds("S", count), count, 0
+	return t.SymbolManage.GetOdds("S", count), count, t.SymbolManage.GetFreeCount("S", count)
 }
 
 /*總共RTP*/
@@ -128,5 +128,3 @@ func (t *CalcLine) GetNormalPlayResult(playcount int) ISlot.IResult {
 
 	return NewResult(playcount, 1, 0, 0)
 }
-
-/*需要一個result的interface*/

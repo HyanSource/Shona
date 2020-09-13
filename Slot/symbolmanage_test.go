@@ -12,11 +12,11 @@ func TestSymbolManage(t *testing.T) {
 	//初始化
 	SM := NewSymbolManage()
 	//新增
-	Add_a := SM.Add(&Symbol{"A", st.NORMAL, []float64{0, 0, 10, 15, 20}})
-	Add_k := SM.Add(&Symbol{"K", st.NORMAL, []float64{0, 0, 10, 15, 20}})
-	Add_w := SM.Add(&Symbol{"W", st.WILD, []float64{0, 0, 0, 0, 100}})
-	Add_s := SM.Add(&Symbol{"S", st.SCATTER, []float64{0, 0, 0, 0, 0}})
-	Add_s2 := SM.Add(&Symbol{"S", st.SCATTER, []float64{0, 0, 0, 0, 0}})
+	Add_a := SM.Add(&Symbol{"A", st.NORMAL, []float64{0, 0, 10, 15, 20}, []int{}})
+	Add_k := SM.Add(&Symbol{"K", st.NORMAL, []float64{0, 0, 10, 15, 20}, []int{}})
+	Add_w := SM.Add(&Symbol{"W", st.WILD, []float64{0, 0, 0, 0, 100}, []int{}})
+	Add_s := SM.Add(&Symbol{"S", st.SCATTER, []float64{0, 0, 0, 0, 0}, []int{}})
+	Add_s2 := SM.Add(&Symbol{"S", st.SCATTER, []float64{0, 0, 0, 0, 0}, []int{}})
 
 	assert.True(t, Add_a)
 	assert.True(t, Add_k)

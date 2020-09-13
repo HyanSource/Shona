@@ -23,13 +23,13 @@ func TestCalcline(t *testing.T) {
 	}
 
 	sm := NewSymbolManage()
-	assert.True(t, sm.Add(NewSymbol("K", st.NORMAL, []float64{0, 0, 5, 30, 100})))
-	assert.True(t, sm.Add(NewSymbol("Q", st.NORMAL, []float64{0, 0, 5, 25, 100})))
-	assert.True(t, sm.Add(NewSymbol("J", st.NORMAL, []float64{0, 0, 5, 20, 75})))
-	assert.True(t, sm.Add(NewSymbol("10", st.NORMAL, []float64{0, 0, 5, 20, 75})))
-	assert.True(t, sm.Add(NewSymbol("9", st.NORMAL, []float64{0, 0, 5, 10, 50})))
-	assert.True(t, sm.Add(NewSymbol("S", st.SCATTER, []float64{0, 0, 50, 0, 0})))
-	assert.True(t, sm.Add(NewSymbol("W", st.WILD, []float64{0, 0, 0, 0, 0})))
+	assert.True(t, sm.Add(NewSymbol("K", st.NORMAL, []float64{0, 0, 5, 30, 100}, []int{})))
+	assert.True(t, sm.Add(NewSymbol("Q", st.NORMAL, []float64{0, 0, 5, 25, 100}, []int{})))
+	assert.True(t, sm.Add(NewSymbol("J", st.NORMAL, []float64{0, 0, 5, 20, 75}, []int{})))
+	assert.True(t, sm.Add(NewSymbol("10", st.NORMAL, []float64{0, 0, 5, 20, 75}, []int{})))
+	assert.True(t, sm.Add(NewSymbol("9", st.NORMAL, []float64{0, 0, 5, 10, 50}, []int{})))
+	assert.True(t, sm.Add(NewSymbol("S", st.SCATTER, []float64{0, 0, 50, 0, 0}, []int{0, 0, 10, 15, 20})))
+	assert.True(t, sm.Add(NewSymbol("W", st.WILD, []float64{0, 0, 0, 0, 0}, []int{})))
 
 	cl := NewCalcLine(3, rs, sm)
 	cl.Init()

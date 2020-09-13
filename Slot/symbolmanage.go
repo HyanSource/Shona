@@ -48,6 +48,14 @@ func (t *SymbolManage) GetOdds(s string, linelen int) float64 {
 	return 0
 }
 
+/*取得免費次數*/
+func (t *SymbolManage) GetFreeCount(s string, linelen int) int {
+	if t.Check(s) && linelen > 0 {
+		return t.Get(s).GetFree()[linelen-1]
+	}
+	return 0
+}
+
 /*移除全部*/
 func (t *SymbolManage) RemoveAll() {
 	t.symbols = make(map[string]ISlot.ISymbol)
