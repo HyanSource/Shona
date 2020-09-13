@@ -43,4 +43,8 @@ func main() {
 
 `SCATTER`:免費素材
 
-#### ISymbol `素材模塊 儲存素材名稱 素材類型 素材賠率`
+#### ISymbol `素材模塊`
+```go
+//素材名稱 素材類型 賠率
+Slot.NewSymbol("K", st.NORMAL, []float64{0, 0, 5, 30, 100})
+```
