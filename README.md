@@ -38,5 +38,7 @@ func main() {
 
 #### SymbolType
 `NORMAL`:一般素材
+
 `WILD`:百搭素材
+
 `SCATTER`:免費素材
