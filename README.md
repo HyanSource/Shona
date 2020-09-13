@@ -36,13 +36,11 @@ func main() {
 #### 架構圖
 ![架構](https://github.com/HyanSource/Shona/blob/master/ShonaArchitecture.png)
 
-#### SymbolType
-##### 素材類型
+#### SymbolType `素材類型`
 `NORMAL`:一般素材
 
 `WILD`:百搭素材
 
 `SCATTER`:免費素材
 
-#### ISymbol
-##### 儲存素材名稱 素材類型 素材賠率
+#### ISymbol `素材模塊 儲存素材名稱 素材類型 素材賠率`
