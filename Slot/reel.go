@@ -3,36 +3,36 @@ package Slot
 import "github.com/HyanSource/Shona/ISlot"
 
 /*初始化行*/
-func NewRow(s []string) ISlot.IRow {
-	return &Row{
+func Newreel(s []string) ISlot.Ireel {
+	return &reel{
 		symbols: s,
 	}
 }
 
 //圖案的列
-type Row struct {
+type reel struct {
 	symbols []string //存放列的圖案
 }
 
 /*重設 節省效能*/
-func (t *Row) SetSymbol(s []string) {
+func (t *reel) SetSymbol(s []string) {
 	t.symbols = s
 }
 
 /*取得行長度*/
-func (t *Row) GetLen() int {
+func (t *reel) GetLen() int {
 	return len(t.symbols)
 }
 
 /*取得行物件*/
-func (t *Row) GetRow() []string {
+func (t *reel) Getreel() []string {
 	r := make([]string, t.GetLen())
 	copy(r, t.symbols)
 	return r
 }
 
 /**/
-func (t *Row) GetSymbols(index int, count int) []string {
+func (t *reel) GetSymbols(index int, count int) []string {
 
 	if count > t.GetLen() {
 		return nil

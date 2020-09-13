@@ -8,17 +8,17 @@ import (
 	"github.com/HyanSource/Shona/ISlot"
 )
 
-func NewCalcLine(height int, rs []ISlot.IRow, sm ISlot.ISymbolManage) ISlot.ICalc {
+func NewCalcLine(height int, rs []ISlot.Ireel, sm ISlot.ISymbolManage) ISlot.ICalc {
 	return &CalcLine{
 		height:       height,
-		rows:         rs,
+		reels:         rs,
 		SymbolManage: sm,
 	}
 }
 
 type CalcLine struct {
 	height       int                 //高度
-	rows         []ISlot.IRow        //所有盤面滾輪
+	reels         []ISlot.Ireel        //所有盤面滾輪
 	SymbolManage ISlot.ISymbolManage //素材管理
 
 	possibility int   //所有可能性
@@ -27,8 +27,8 @@ type CalcLine struct {
 
 func (t *CalcLine) Init() {
 	t.possibility = 1
-	t.subarray = make([]int, len(t.rows))
-	for k, v := range t.rows {
+	t.subarray = make([]int, len(t.reels))
+	for k, v := range t.reels {
 		t.subarray[k] = t.possibility
 		t.possibility *= v.GetLen()
 	}
@@ -37,7 +37,7 @@ func (t *CalcLine) Init() {
 }
 
 func (t *CalcLine) GetLen() int {
-	return len(t.rows)
+	return len(t.reels)
 }
 
 func (t *CalcLine) GetPossibility() int {
@@ -50,16 +50,16 @@ func (t *CalcLine) GetGameTable(index int) []string {
 		panic("no table possibility:" + strconv.Itoa(index))
 	}
 	//滾輪引索
-	index_arr := make([]int, len(t.rows))
+	index_arr := make([]int, len(t.reels))
 	for i := 0; i < len(index_arr); i++ {
 		index_arr[i] = (index / t.subarray[i])
 		index = (index % t.subarray[i])
 	}
 
 	//顯示盤面
-	result := make([]string, len(t.rows))
+	result := make([]string, len(t.reels))
 	for i := 0; i < len(result); i++ {
-		result[i] = t.rows[i].GetSymbols(index_arr[i], 1)[0]
+		result[i] = t.reels[i].GetSymbols(index_arr[i], 1)[0]
 	}
 
 	return result

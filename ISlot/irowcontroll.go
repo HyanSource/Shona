@@ -1,8 +1,8 @@
 package ISlot
 
-type IRowsControll interface {
-	GetRowsLen() int    //取得滾輪長度
-	GetAllRows() []IRow //取得所有滾輪
+type IreelsControll interface {
+	GetreelsLen() int    //取得滾輪長度
+	GetAllreels() []Ireel //取得所有滾輪
 
 	GetPossibility() int //取得所有機率發生次數
 

@@ -1,8 +1,8 @@
 package ISlot
 
-type IRow interface {
+type Ireel interface {
 	SetSymbol(s []string)
 	GetLen() int
-	GetRow() []string
+	Getreel() []string
 	GetSymbols(index int, count int) []string
 }
