@@ -47,14 +47,14 @@ func main() {
 #### ISymbol `素材模塊`
 ```go
     //素材名稱 素材類型 賠率
-    Slot.NewSymbol("K", st.NORMAL, []float64{0, 0, 5, 30, 100})
+    Slot.NewSymbol("K", st.NORMAL, []float64{0, 0, 5, 30, 100}, []int{})
 ```
 
 #### ISymbolManage `管理素材模塊`
 ```go
 //新增素材類型以及賠率
     sm := NewSymbolManage()
-    sm.Add(NewSymbol("K", st.NORMAL, []float64{0, 0, 5, 30, 100}))
+    sm.Add(NewSymbol("K", st.NORMAL, []float64{0, 0, 5, 30, 100}, []int{}))
 ```
 
 #### Ireel `滾輪管理模塊`
