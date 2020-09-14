@@ -81,7 +81,7 @@ func (t *CalcLine) CalcOdds(result []string) float64 {
 	return t.SymbolManage.GetOdds(lott, count)
 }
 
-/*計算scatter賠率部分和獲得免費次數(依照不同規則)*/
+/*計算scatter賠率部分和獲得免費次數(依照不同規則) 賠率,幾顆,次數*/
 func (t *CalcLine) CalcScatter(result []string) (float64, int, int) {
 
 	/*目前算只有考慮當只有1種Scatter*/
@@ -97,7 +97,7 @@ func (t *CalcLine) CalcScatter(result []string) (float64, int, int) {
 			}
 		}
 	}
-	/*暫時寫法*/
+
 	return t.SymbolManage.GetOdds("S", count), count, t.SymbolManage.GetFreeCount("S", count)
 }
 
@@ -105,7 +105,6 @@ func (t *CalcLine) CalcScatter(result []string) (float64, int, int) {
 func (t *CalcLine) GetResult() ISlot.IResult {
 
 	winmoney := 0.0
-	// scatterwinmoney := 0.0
 	freecount := 0
 	for i := 0; i < t.possibility; i++ {
 		s := t.GetGameTable(i)
@@ -113,7 +112,7 @@ func (t *CalcLine) GetResult() ISlot.IResult {
 		swm, c, f := t.CalcScatter(s)
 		//當計算scatter部分需要注意 要看滾輪的高度
 		winmoney += swm * math.Pow(float64(t.height), float64(c))
-		freecount += f
+		freecount += f * int(math.Pow(float64(t.height), float64(c)))
 	}
 
 	return NewResult(t.possibility, 1, winmoney, freecount)
