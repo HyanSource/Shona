@@ -26,9 +26,7 @@ func (t *reel) GetLen() int {
 
 /*取得行物件*/
 func (t *reel) Getreel() []string {
-	r := make([]string, t.GetLen())
-	copy(r, t.symbols)
-	return r
+	return t.symbols
 }
 
 /**/

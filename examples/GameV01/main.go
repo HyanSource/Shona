@@ -40,4 +40,9 @@ func main() {
 	result := cl.GetResult()
 	fmt.Println("RTP:", result.GetRTP())
 	fmt.Println("FreeP:", result.GetFreeP())
+
+	result2 := cl.GetNormalPlayResult(100000000)
+	fmt.Println("NormalPlay RTP:", result2.GetRTP())
+	fmt.Println("NormalPlay FreeP:", result2.GetFreeP())
+
 }
