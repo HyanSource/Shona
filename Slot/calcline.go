@@ -82,11 +82,13 @@ func (t *CalcLine) CalcOdds(result []string) float64 {
 	lott := result[0]
 	count := 1
 	for i := 1; i < len(result); i++ {
-		/*等於自身符號次或是WILD*/
+		/*等於自身符號或是WILD*/
 		if result[i] == lott || t.SymbolManage.Get(result[i]).CheckType(st.WILD) {
 			count++
+		} else {
+			break
 		}
-		break
+
 	}
 
 	return t.SymbolManage.GetOdds(lott, count)
